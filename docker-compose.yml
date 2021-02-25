@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  backend:
+    image: cloaiza/backend-app
+    ports:
+      - 4001:4001
+  frontend:
+    image: cloaiza/frontend-app
+    ports:
+      - 5000:80
+    depends_on:
+      - backend
+    environment: 
+      - VUE_APP_API_ENDPOINT=http://backend:4001/api
